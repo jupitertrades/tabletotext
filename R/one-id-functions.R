@@ -24,9 +24,8 @@ two_sigma_sentence <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/two-sigma-change",
+  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/two-sigma-change",
              body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
-  response <- ch %>% httr::content()
   return(response)
 }
