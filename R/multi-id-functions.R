@@ -63,7 +63,7 @@ asset_rank_raw <- function(metric_df, subject, metric_name = NULL) {
          dataframe passed to the function.')
   }
 
-  pb <- list(metric_df = metric_df[1:10,],
+  pb <- list(metric_df,
              key = key,
              subject = subject,
              name = name)
