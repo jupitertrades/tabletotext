@@ -35,7 +35,7 @@ asset_rank_raw <- function(metric_df, subject, metric_name = NULL) {
              subject = subject,
              name = name)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/asset-rank-raw",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/asset-rank-raw",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -79,7 +79,7 @@ asset_rank_pct <- function(metric_df, subject, metric_name = NULL) {
              subject = subject,
              name = name)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/asset-rank-pct",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/asset-rank-pct",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)

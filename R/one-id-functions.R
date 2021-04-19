@@ -53,7 +53,7 @@ describe_trend <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/describe-trend",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/describe-trend",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -83,7 +83,7 @@ report_metric <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/report-metric",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-metric",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -114,7 +114,7 @@ report_average <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/report-average",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-average",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -146,7 +146,7 @@ change_over_time <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/change-over-time",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/change-over-time",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -178,7 +178,7 @@ change_over_time_random <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/change-over-time-random",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/change-over-time-random",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -212,7 +212,7 @@ change_over_time_random_low_good <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/change-over-time-random-low-good",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/change-over-time-random-low-good",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
