@@ -43,7 +43,7 @@ two_sigma_sentence <- function(metric_df) {
 #'two_sigma_sentence(metric_df)
 #'}
 #'
-#' @export two_sigma_sentence
+#' @export describe_trend
 #' @import tibble
 #' @import httr
 #' @import dplyr
