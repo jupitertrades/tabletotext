@@ -2,20 +2,20 @@
 % Please edit documentation in R/one-id-functions.R
 \name{two_sigma_sentence}
 \alias{two_sigma_sentence}
-\title{Two Sigma Event}
+\title{Two Sigma Change}
 \usage{
 two_sigma_sentence(metric_df)
 }
 \arguments{
-\item{metric_df}{}
+\item{metric_df}{A dataframe requiring the following columns: asset_id,
+name, time, and value.}
 }
 \value{
 A sentence if a two sigma event has occurred; an empty
 character string if not.
 }
 \description{
-Checks if a two sigma change has occurred. If so, returns a sentence,
-if not, returns an empty character string.
+Was there a two sigma change in the most recent event?
 }
 \examples{
 \dontrun{
