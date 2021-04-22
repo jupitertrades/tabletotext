@@ -26,7 +26,7 @@ latest_best_rank <- function(metric_df) {
   pb <- list(metric_df = metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/latest-best-rank",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/latest-best-rank",
              body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -60,7 +60,7 @@ strongest_trend <- function(metric_df) {
   pb <- list(metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/strongest-trend",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/strongest-trend",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -86,7 +86,7 @@ strongest_trend <- function(metric_df) {
 #'latest_lowest_rank(metric_df)
 #'}
 #'
-#' @export strongest_trend
+#' @export latest_lowest_rank
 #' @import tibble
 #' @import httr
 #' @import dplyr
@@ -97,7 +97,7 @@ latest_lowest_rank <- function(metric_df) {
   pb <- list(metric_df,
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-dev-mrwwgrktvq-ue.a.run.app/latest-lowest-rank",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/latest-lowest-rank",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
