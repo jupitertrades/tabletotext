@@ -30,7 +30,7 @@ asset_rank_raw <- function(metric_df, subject, metric_name = NULL) {
          dataframe passed to the function.')
   }
 
-  pb <- list(metric_df,
+  pb <- list(metric_df = metric_df,
              key = key,
              subject = subject,
              name = name)
@@ -74,10 +74,10 @@ asset_rank_pct <- function(metric_df, subject, metric_name = NULL) {
          dataframe passed to the function.')
   }
 
-  pb <- list(metric_df,
+  pb <- list(metric_df = metric_df,
              key = key,
              subject = subject,
-             name = name)
+             name = metric_name)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/asset-rank-pct",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
