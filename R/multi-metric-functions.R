@@ -102,3 +102,68 @@ latest_lowest_rank <- function(metric_df) {
     as.character()
   return(response)
 }
+
+#' @title Compare Two Metrics From Two Assets
+#'
+#' @description How do two metricsm, one from one asset and one from another, compare?
+#'
+#' @param metric_df A dataframe with the following columns: asset_id (chr),
+#' asset_id_compare (chr), value (dbl), time (date or dttm),
+#' value_compare (dbl), and name (chr).
+#'
+#' @return A sentence denoting which metric in the submitted dataframe
+#' the given asset id had the lowest rank for.
+#'
+#'@examples
+#' \dontrun{
+#'compare_two_metrics_latest(metric_df)
+#'}
+#'
+#' @export compare_two_metrics_latest
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+compare_two_metrics_latest <- function(metric_df) {
+  key <- Sys.getenv('table_to_text')
+
+  pb <- list(metric_df = metric_df,
+             key = key)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/compare-two-metrics-latest",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
+#' @title Return Three Random Facts
+#'
+#' @description What are three random facts about the data presented?
+#'
+#' @param metric_df A dataframe with the following columns: asset_id (chr),
+#' time (date or dttm)
+#'
+#' @return A sentence denoting which metric in the submitted dataframe
+#' the given asset id had the lowest rank for.
+#'
+#'@examples
+#' \dontrun{
+#'random_fact_3bullets(metric_df)
+#'}
+#'
+#' @export random_fact_3bullets
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+random_fact_3bullets <- function(metric_df) {
+  key <- Sys.getenv('table_to_text')
+
+  pb <- list(metric_df = metric_df,
+             key = key)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/random-fact-3bullets",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
