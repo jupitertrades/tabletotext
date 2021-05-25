@@ -2,7 +2,7 @@
 % Please edit documentation in R/one-id-functions.R
 \name{report_average}
 \alias{report_average}
-\title{Report Metric}
+\title{Report Average}
 \usage{
 report_average(metric_df)
 }

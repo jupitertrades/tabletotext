@@ -89,7 +89,40 @@ report_metric <- function(metric_df) {
   return(response)
 }
 
-#' @title Report Metric
+#' @title Report Metric With Percent Change
+#'
+#' @description Reports the latest value of a given metric, and its percent change
+#' since the previous record.
+#'
+#' @param metric_df A dataframe requiring the following columns:
+#' asset_id, name, time, and value.
+#'
+#' @return A sentence reporting the latest value of a given metric along with its
+#' percent change since the prior value.
+#'
+#'@examples
+#' \dontrun{
+#'report_metric_with_percent_change(metric_df)
+#'}
+#'
+#' @export report_metric
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+report_metric_with_percent_change <- function(metric_df) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-metric-with-pct-change",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
+
+#' @title Report Average
 #'
 #' @description Reports the average value of a given metric.
 #'
