@@ -105,7 +105,7 @@ report_metric <- function(metric_df) {
 #'report_metric_with_percent_change(metric_df)
 #'}
 #'
-#' @export report_metric
+#' @export report_metric_with_percent_change
 #' @import tibble
 #' @import httr
 #' @import dplyr
