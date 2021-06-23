@@ -199,3 +199,37 @@ random_fact_3bullets <- function(metric_df) {
     as.character()
   return(response)
 }
+
+
+#' @title Report Three Random Metrics
+#'
+#' @description What are three random metrics from the data presented?
+#'
+#' @param metric_df A dataframe an asset_id column (chr), and an unspecified
+#' number of numeric columns. The column names of the numeric columns will be
+#' used in the generated text.
+#'
+#' @return Three sentences, each wrapped in HTML bullet tags (<li>), reporting
+#' the value of three randomly selected numeric columns.
+#'
+#'@examples
+#' \dontrun{
+#'report_3metrics_random(metric_df)
+#'}
+#'
+#' @export report_3metrics_random
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+report_3metrics_random <- function(metric_df) {
+  key <- Sys.getenv('table_to_text')
+
+  pb <- list(metric_df = metric_df,
+             key = key)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-3metrics-random",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
