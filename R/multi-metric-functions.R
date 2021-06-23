@@ -136,6 +136,38 @@ compare_two_metrics_latest <- function(metric_df) {
   return(response)
 }
 
+#' @title Compare Two Trends
+#'
+#' @description How do the timeseries trends amongst two metrics compare?
+#'
+#' @param metric_df A dataframe with the following columns: asset_id (chr),
+#' asset_id2 (chr),time (date or dttm),value (dbl),value2 (dbl)
+#'
+#' @return A sentence denoting the difference or similarity between the
+#' trend of two metrics.
+#'
+#'@examples
+#' \dontrun{
+#'compare_two_metrics_trend(metric_df)
+#'}
+#'
+#' @export compare_two_metrics_trend
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+compare_two_metrics_trend <- function(metric_df) {
+  key <- Sys.getenv('table_to_text')
+
+  pb <- list(metric_df = metric_df,
+             key = key)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/compare-two-metrics-trend",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
 #' @title Return Three Random Facts
 #'
 #' @description What are three random facts about the data presented?
