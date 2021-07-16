@@ -4,7 +4,7 @@
 \alias{compare_two_metrics_trend}
 \title{Compare Two Trends}
 \usage{
-compare_two_metrics_trend(metric_df)
+compare_two_metrics_trend(metric_df, template_id = NULL)
 }
 \arguments{
 \item{metric_df}{A dataframe with the following columns: asset_id (chr),

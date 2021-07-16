@@ -1,3 +1,75 @@
+#' @title Report Highest Performer
+#'
+#' @description In a table with multiple asset IDs,
+#' reports the asset ID (subject) with the highest value.
+#'
+#' @param metric_df A dataframe with the following columns: asset_id (chr),
+#' value (dbl), time (date or dttm), asset_class (chr), and name (chr).
+#' @param template_id Optional. The template to be used for the article.
+#'
+#' @return A sentence denoting the highest performer out of a set of
+#' given asset IDs.
+#'
+#'@examples
+#' \dontrun{
+#'report_highest_performer(metric_df)
+#'}
+#'
+#' @export report_highest_performer
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+report_highest_performer <- function(metric_df, template_id = NULL) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key,
+             template_id = template_id)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-highest-performer",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
+#' @title Report Lowest Performer
+#'
+#' @description In a table with multiple asset IDs,
+#' reports the asset ID (subject) with the highest value.
+#'
+#' @param metric_df A dataframe with the following columns: asset_id (chr),
+#' value (dbl), time (date or dttm), asset_class (chr), and name (chr).
+#' @param template_id Optional. The template to be used for the article.
+#'
+#' @return A sentence denoting the lowest performer out of a set of
+#' given asset IDs.
+#'
+#'@examples
+#' \dontrun{
+#'report_lowest_performer(metric_df)
+#'}
+#'
+#' @export report_lowest_performer
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+report_lowest_performer <- function(metric_df, template_id = NULL) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key,
+             template_id = template_id)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-lowest-performer",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
+
+############### LEGACY
+
+
 #' @title Asset Rank (Raw)
 #'
 #' @description In a table with multiple asset IDs,
