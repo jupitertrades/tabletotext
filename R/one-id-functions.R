@@ -121,7 +121,6 @@ report_metric_with_percent_change <- function(metric_df) {
   return(response)
 }
 
-
 #' @title Report Average
 #'
 #' @description Reports the average value of a given metric.
@@ -148,6 +147,38 @@ report_average <- function(metric_df) {
              key = key)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-average",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
+#' @title Report Range
+#'
+#' @description Reports the range of a given metric.
+#'
+#' @param metric_df A dataframe requiring the following columns:
+#' asset_id, name, and value.
+#' @param template_id Optional. The template to be used for the article.
+#'
+#' @return A sentence reporting the range of a given metric
+#' in the submitted dataframe.
+#'
+#'@examples
+#' \dontrun{
+#'report_range(metric_df)
+#'}
+#'
+#' @export report_range
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+report_range <- function(metric_df,template_id = NULL) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key, template_id = NULL)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-range",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)

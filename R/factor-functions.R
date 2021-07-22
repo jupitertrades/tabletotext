@@ -32,7 +32,7 @@ report_most_common_factor <- function(metric_df,template_id = NULL) {
   }
 
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-most-common-factor",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-most-common-factors",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
@@ -72,7 +72,7 @@ report_least_common_factor <- function(metric_df,template_id = NULL) {
   }
 
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
-  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-least-common-factor",
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-least-common-factors",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
     as.character()
   return(response)
