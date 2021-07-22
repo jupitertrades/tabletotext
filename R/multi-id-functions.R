@@ -66,6 +66,60 @@ report_lowest_performer <- function(metric_df, template_id = NULL) {
   return(response)
 }
 
+#' @title Most Correlated
+#'
+#' @description In a table with multiple asset IDs,
+#' reports the asset ID most correlated to the subject asset_Id ID.
+#'
+#' @param metric_df A dataframe with the following columns: asset_id (chr),
+#' value (dbl), time (date or dttm)
+#' @param template_id Optional. The template to be used for the article.
+#' @param subject The asset ID to measure correlations for.
+#'
+#' @return A sentence denoting the asset ID most correlated to the
+#' declared subject.
+#'
+#'@examples
+#' \dontrun{
+#'most_correlated(metric_df)
+#'}
+#'
+#' @export most_correlated
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+most_correlated <- function(metric_df, subject,template_id = NULL) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key,
+             subject = subject,
+             template_id = template_id)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/most-correlated",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
+#' @export most_correlated3
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+most_correlated3 <- function(metric_df, subject,template_id = NULL) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key,
+             subject = subject,
+             template_id = template_id)
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/most-correlated3",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
 
 ############### LEGACY
 
