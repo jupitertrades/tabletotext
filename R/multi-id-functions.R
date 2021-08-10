@@ -102,6 +102,25 @@ most_correlated <- function(metric_df, subject,template_id = NULL) {
   return(response)
 }
 
+
+#' @export least_correlated
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+least_correlated <- function(metric_df, subject,template_id = NULL) {
+  key <- Sys.getenv('table_to_text')
+  pb <- list(metric_df = metric_df,
+             key = key,
+             subject = subject,
+             template_id = ifelse(is.null(template_id),'default',template_id))
+  body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
+  response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/least-correlated",
+                         body = body_json,httr::accept_json()) %>% httr::content() %>%
+    as.character()
+  return(response)
+}
+
 #' @export most_correlated3
 #' @import tibble
 #' @import httr
@@ -112,7 +131,7 @@ most_correlated3 <- function(metric_df, subject,template_id = NULL) {
   pb <- list(metric_df = metric_df,
              key = key,
              subject = subject,
-             template_id = template_id)
+             template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/most-correlated3",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
