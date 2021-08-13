@@ -94,7 +94,7 @@ most_correlated <- function(metric_df, subject,template_id = NULL) {
   pb <- list(metric_df = metric_df,
              key = key,
              subject = subject,
-             template_id = template_id)
+             template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/most-correlated",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
