@@ -9,6 +9,8 @@ report_metric(metric_df, template_id = NULL)
 \arguments{
 \item{metric_df}{A dataframe requiring the following columns:
 asset_id, name, time, and value.}
+
+\item{template_id}{The template to use. optional.}
 }
 \value{
 A sentence reporting the latest value of a given metric.

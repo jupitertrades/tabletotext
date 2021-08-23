@@ -65,6 +65,7 @@ describe_trend <- function(metric_df) {
 #'
 #' @param metric_df A dataframe requiring the following columns:
 #' asset_id, name, time, and value.
+#' @param template_id The template to use. optional.
 #'
 #' @return A sentence reporting the latest value of a given metric.
 #'
