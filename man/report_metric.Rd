@@ -4,7 +4,7 @@
 \alias{report_metric}
 \title{Report Metric}
 \usage{
-report_metric(metric_df)
+report_metric(metric_df, template_id = NULL)
 }
 \arguments{
 \item{metric_df}{A dataframe requiring the following columns:

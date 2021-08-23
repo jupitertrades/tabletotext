@@ -78,10 +78,10 @@ describe_trend <- function(metric_df) {
 #' @import httr
 #' @import dplyr
 
-report_metric <- function(metric_df) {
+report_metric <- function(metric_df,template_id = NULL) {
   key <- Sys.getenv('table_to_text')
   pb <- list(metric_df = metric_df,
-             key = key)
+             key = key,template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-metric",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
