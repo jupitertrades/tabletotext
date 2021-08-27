@@ -75,10 +75,12 @@ report_top3_movers_in_class <- function(metric_df) {
 #' @import httr
 #' @import dplyr
 
-report_rank <- function(metric_df,template_id = NULL) {
+report_rank <- function(metric_df,template_id = NULL,subject) {
   key <- Sys.getenv('table_to_text')
   pb <- list(metric_df = metric_df,
-             key = key,template_id = ifelse(is.null(template_id),'default',template_id))
+             key = key,
+             template_id = ifelse(is.null(template_id),'default',template_id),
+             subject = subject)
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-rank",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
