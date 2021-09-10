@@ -128,6 +128,7 @@ report_metric_with_percent_change <- function(metric_df) {
 #'
 #' @param metric_df A dataframe requiring the following columns:
 #' asset_id, name, time, and value.
+#' @param template_id Optional. The template to be used for the article.
 #'
 #' @return A sentence reporting the average value of a given metric
 #' in the submitted dataframe.
@@ -142,10 +143,10 @@ report_metric_with_percent_change <- function(metric_df) {
 #' @import httr
 #' @import dplyr
 
-report_average <- function(metric_df) {
+report_average <- function(metric_df,template_id = NULL) {
   key <- Sys.getenv('table_to_text')
   pb <- list(metric_df = metric_df,
-             key = key)
+             key = key,template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/report-average",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
