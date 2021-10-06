@@ -91,7 +91,7 @@ strongest_trend <- function(metric_df) {
 #' @import httr
 #' @import dplyr
 
-latest_lowest_rank <- function(metric_df) {
+latest_lowest_rank <- function(metric_df,template_id = NULL) {
   key <- Sys.getenv('table_to_text')
 
   pb <- list(metric_df = metric_df,
@@ -124,11 +124,12 @@ latest_lowest_rank <- function(metric_df) {
 #' @import httr
 #' @import dplyr
 
-compare_two_metrics_latest <- function(metric_df) {
+compare_two_metrics_latest <- function(metric_df,template_id = NULL) {
   key <- Sys.getenv('table_to_text')
 
   pb <- list(metric_df = metric_df,
-             key = key)
+             key = key,
+             template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/compare-two-metrics-latest",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
@@ -159,7 +160,8 @@ compare_two_metrics_latest <- function(metric_df) {
 compare_two_metrics_trend <- function(metric_df,template_id = NULL) {
   key <- Sys.getenv('table_to_text')
 
-  pb <- list(metric_df = metric_df,key = key,template_id = template_id)
+  pb <- list(metric_df = metric_df,key = key,
+             template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/compare-two-metrics-trend",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
@@ -187,11 +189,12 @@ compare_two_metrics_trend <- function(metric_df,template_id = NULL) {
 #' @import httr
 #' @import dplyr
 
-random_fact_3bullets <- function(metric_df) {
+random_fact_3bullets <- function(metric_df,template_id = NULL) {
   key <- Sys.getenv('table_to_text')
 
   pb <- list(metric_df = metric_df,
-             key = key)
+             key = key,
+             template_id = ifelse(is.null(template_id),'default',template_id))
   body_json <- paste0('{"post_body":',jsonlite::toJSON(pb), '}', sep = '')
   response <- httr::POST("https://generate-text-mrwwgrktvq-ue.a.run.app/random-fact-3bullets",
                          body = body_json,httr::accept_json()) %>% httr::content() %>%
