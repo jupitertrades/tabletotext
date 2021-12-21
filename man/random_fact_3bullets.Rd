@@ -4,7 +4,7 @@
 \alias{random_fact_3bullets}
 \title{Return Three Random Facts}
 \usage{
-random_fact_3bullets(metric_df)
+random_fact_3bullets(metric_df, template_id = NULL)
 }
 \arguments{
 \item{metric_df}{A dataframe with the following columns: asset_id (chr),

@@ -4,7 +4,7 @@
 \alias{report_rank}
 \title{Report Rank}
 \usage{
-report_rank(metric_df, template_id = NULL)
+report_rank(metric_df, template_id = NULL, subject)
 }
 \arguments{
 \item{metric_df}{A dataframe requiring the following columns: asset_id,

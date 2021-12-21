@@ -4,7 +4,7 @@
 \alias{latest_lowest_rank}
 \title{Latest Lowest Rank}
 \usage{
-latest_lowest_rank(metric_df)
+latest_lowest_rank(metric_df, template_id = NULL)
 }
 \arguments{
 \item{metric_df}{A dataframe with the following columns: asset_id (chr),

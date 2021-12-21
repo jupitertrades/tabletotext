@@ -4,11 +4,13 @@
 \alias{report_average}
 \title{Report Average}
 \usage{
-report_average(metric_df)
+report_average(metric_df, template_id = NULL)
 }
 \arguments{
 \item{metric_df}{A dataframe requiring the following columns:
 asset_id, name, time, and value.}
+
+\item{template_id}{Optional. The template to be used for the article.}
 }
 \value{
 A sentence reporting the average value of a given metric

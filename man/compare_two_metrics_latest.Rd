@@ -4,7 +4,7 @@
 \alias{compare_two_metrics_latest}
 \title{Compare Two Metrics From Two Assets}
 \usage{
-compare_two_metrics_latest(metric_df)
+compare_two_metrics_latest(metric_df, template_id = NULL)
 }
 \arguments{
 \item{metric_df}{A dataframe with the following columns: asset_id (chr),
