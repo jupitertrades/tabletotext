@@ -8,6 +8,6 @@ Description: Functions to provide reporting and statistical insight, in text for
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.0
 Suggests: 
     testthat

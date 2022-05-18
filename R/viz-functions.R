@@ -58,3 +58,30 @@ one_metric_over_time_story <- function(metric_df) {
     as.character()
   return(response)
 }
+
+#' @title Get Price Chart
+#'
+#' @description Return a candlestick chart for a given asset, with the
+#' specified theme.
+#'
+#' @param symbol (chr) A ticker for a financial asset.
+#' @param theme (chr) The theme that should be applied to the candlestick chart.
+#'
+#' @return A link to an image showing a visualization of the metric included.
+#'
+#'@examples
+#' \dontrun{
+#'get_price_chart('amzn','stocknews')
+#'}
+#'
+#'
+#' @export get_price_chart
+#' @import tibble
+#' @import httr
+#' @import dplyr
+
+get_price_chart <- function(symbol,theme) {
+  response <- httr::GET(glue::glue('https://generate-text-mrwwgrktvq-ue.a.run.app/get-price-chart?symbol={symbol}&theme={theme}')) %>%
+    httr::content() %>% as.character()
+  return(response)
+}
